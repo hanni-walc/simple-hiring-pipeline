@@ -1,18 +1,28 @@
-export default function RoutePage() {
+import { buildJobScorecard, sampleCandidates, sampleJobs } from '../../../../lib/product';
+
+const scorecard = buildJobScorecard(sampleJobs[0], sampleCandidates);
+
+export default function JobDetailPage() {
   return (
     <main className="shell">
       <section className="frame hero">
-        <p className="eyebrow">Route</p>
-        <h1>Page scaffold</h1>
-        <p className="lead">This route exists so the repo is structurally complete and ready for a real backend implementation.</p>
-        <div className="row">
-          <a className="button" href="/app">Back to dashboard</a>
-          <a className="ghost" href="/">Open landing page</a>
-        </div>
+        <p className="eyebrow">Job detail</p>
+        <h1>{sampleJobs[0].title}</h1>
+        <p className="lead">Use this scorecard view when deciding whether to move a candidate forward or close the loop.</p>
       </section>
-      <section className="card">
-        <p className="kicker">Implementation note</p>
-        <p className="muted">Replace this scaffold with route-specific behavior, forms, or detail views as the product is implemented.</p>
+
+      <section className="grid cols-2">
+        <article className="card">
+          <p className="kicker">Scorecard</p>
+          <h2>{scorecard.title}</h2>
+          <p className="muted">{scorecard.hiringManager}</p>
+          <ul className="list">{scorecard.topSignals.map((signal) => <li key={signal}>{signal}</li>)}</ul>
+        </article>
+        <article className="card">
+          <p className="kicker">Decision</p>
+          <h2>{scorecard.decision}</h2>
+          <p className="muted">Use the scorecard to align interviews and keep feedback structured.</p>
+        </article>
       </section>
     </main>
   );

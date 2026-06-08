@@ -1,18 +1,24 @@
-export default function RoutePage() {
+import { buildCandidatePipeline, sampleCandidates } from '../../../lib/product';
+
+const pipeline = buildCandidatePipeline(sampleCandidates);
+
+export default function CandidatesPage() {
   return (
     <main className="shell">
       <section className="frame hero">
-        <p className="eyebrow">Route</p>
-        <h1>Page scaffold</h1>
-        <p className="lead">This route exists so the repo is structurally complete and ready for a real backend implementation.</p>
-        <div className="row">
-          <a className="button" href="/app">Back to dashboard</a>
-          <a className="ghost" href="/">Open landing page</a>
-        </div>
+        <p className="eyebrow">Candidates</p>
+        <h1>Move candidates through the pipeline with less friction.</h1>
+        <p className="lead">The pipeline keeps the next step obvious: screen, interview, offer, or close out.</p>
       </section>
-      <section className="card">
-        <p className="kicker">Implementation note</p>
-        <p className="muted">Replace this scaffold with route-specific behavior, forms, or detail views as the product is implemented.</p>
+
+      <section className="grid cols-2">
+        {pipeline.map((item) => (
+          <article key={item.candidateId} className="card">
+            <p className="kicker">{item.stage}</p>
+            <h2>{item.candidateName}</h2>
+            <p className="muted">{item.summary}</p>
+          </article>
+        ))}
       </section>
     </main>
   );
