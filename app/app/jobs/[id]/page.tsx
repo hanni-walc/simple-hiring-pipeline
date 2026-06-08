@@ -2,6 +2,10 @@ import { buildJobScorecard, sampleCandidates, sampleJobs } from '../../../../lib
 
 const scorecard = buildJobScorecard(sampleJobs[0], sampleCandidates);
 
+export function generateStaticParams() {
+  return sampleJobs.map((job) => ({ id: job.id }));
+}
+
 export default function JobDetailPage() {
   return (
     <main className="shell">

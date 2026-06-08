@@ -1,4 +1,5 @@
 import { BUYER, LAUNCH, PROMISE, V2, WEDGE, buildCandidatePipeline, buildHiringDashboard, buildJobScorecard, sampleCandidates, sampleInterviews, sampleJobs } from '../lib/product';
+import { withBasePath } from "@/lib/site-path";
 
 const dashboard = buildHiringDashboard(sampleJobs, sampleCandidates, sampleInterviews);
 const pipeline = buildCandidatePipeline(sampleCandidates);
@@ -12,8 +13,8 @@ export default function HomePage() {
         <h1>{PROMISE}</h1>
         <p className="lead">{WEDGE} Built for {BUYER} that need a clear way to move candidates without ATS clutter.</p>
         <div className="row">
-          <a className="button" href="/app">Open dashboard</a>
-          <a className="ghost" href="/app/jobs">View jobs</a>
+          <a className="button" href={withBasePath('/app')}>Open dashboard</a>
+          <a className="ghost" href={withBasePath('/app/jobs')}>View jobs</a>
         </div>
       </section>
 

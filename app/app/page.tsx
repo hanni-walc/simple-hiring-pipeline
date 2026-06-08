@@ -1,4 +1,5 @@
 import { buildHiringDashboard, sampleCandidates, sampleInterviews, sampleJobs } from '../../lib/product';
+import { withBasePath } from "@/lib/site-path";
 
 const dashboard = buildHiringDashboard(sampleJobs, sampleCandidates, sampleInterviews);
 
@@ -10,8 +11,8 @@ export default function DashboardPage() {
         <h1>Keep hiring moving without spreadsheet chaos.</h1>
         <p className="lead">Track open roles, candidates, and interviews in one calm workspace.</p>
         <div className="row">
-          <a className="button" href="/app/jobs">Open jobs</a>
-          <a className="ghost" href="/app/candidates">Review candidates</a>
+          <a className="button" href={withBasePath('/app/jobs')}>Open jobs</a>
+          <a className="ghost" href={withBasePath('/app/candidates')}>Review candidates</a>
         </div>
       </section>
 
